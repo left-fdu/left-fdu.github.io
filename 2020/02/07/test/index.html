@@ -27,6 +27,7 @@ testatypora好像没有用。
     <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
     <link rel="stylesheet" type="text/css" href="/css/matery.css">
     <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <link rel="stylesheet" href="css/iconfont/iconfont.css">
     
     <script src="/libs/jquery/jquery.min.js"></script>
     
@@ -448,7 +449,17 @@ testatypora好像没有用。
                 
 
                 
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    25
+                </div>
+                
 
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    1 分
+                </div>
                 
 
                 
@@ -653,7 +664,7 @@ testatypora好像没有用。
                         <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
                     </ul>
                     <div id="alipay">
-                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                        <img src="/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
                     </div>
                     <div id="wechat">
                         <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
@@ -774,6 +785,43 @@ testatypora好像没有用。
 
 </div>
 
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: KittyLeft<br />'
+            + '文章作者: left<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
 
 
 <!-- 代码块功能依赖 -->
@@ -916,13 +964,13 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             
             
             
-            <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_container_site_pv" style='display:none'>
                 |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
                     class="white-color"></span>&nbsp;次
             </span>
             
             
-            <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_container_site_uv" style='display:none'>
                 |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
                     class="white-color"></span>&nbsp;人
             </span>
@@ -933,41 +981,60 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             
         </div>
         <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+    <a href="https://github.com/left-fdu" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
         <i class="fab fa-github"></i>
     </a>
 
 
 
-    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fas fa-envelope-open"></i>
+
+
+
+
+
+
+
+
+
+
+    <a href="https://space.bilibili.com/21775553" class="tooltipped" target="_blank" data-tooltip="关注我的B站: https://space.bilibili.com/21775553" data-position="top" data-delay="50">
+        <i class="iconfont icon-bilibili-fill"></i>
     </a>
 
 
 
-
-
-
-
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1181062873" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">
-        <i class="fab fa-qq"></i>
+    <a href="https://www.zhihu.com/people/KittyLeft" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com/people/KittyLeft" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">知</i>
     </a>
 
 
-
-
-
-
-
-    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-        <i class="fas fa-rss"></i>
-    </a>
 
 </div>
     </div>
 </footer>
 
 <div class="progress-bar"></div>
+
+<script>
+	$(document).ready(function () {
+		
+		var int = setInterval(fixCount, 50); // 50ms周期检测函数
+		var pvcountOffset = 80000; // 初始化首次数据
+		var uvcountOffset = 20000;
+		
+		function fixCount() {
+			if (document.getElementById("busuanzi_container_site_pv").style.display != "none") {
+				$("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + pvcountOffset);
+				clearInterval(int);
+			}
+			if ($("#busuanzi_container_site_pv").css("display") != "none") {
+				$("#busuanzi_value_site_uv").html(parseInt($("#busuanzi_value_site_uv").html()) + uvcountOffset); // 加上初始数据
+				clearInterval(int); // 停止检测
+			}
+		}
+	});
+</script>
+
 
 
     <!-- 搜索遮罩框 -->
