@@ -264,7 +264,7 @@
 
 <script>
     // 每天切换 banner 图.  Switch banner image every day.
-    $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.jpg)');
+    $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDate() + '.jpg)');
 </script>
 
 
@@ -454,7 +454,7 @@
         },
         xAxis: {
             type: 'category',
-            data: ["2019-02","2019-03","2019-04","2019-05","2019-06","2019-07","2019-08","2019-09","2019-10","2019-11","2019-12","2020-01","2020-02"]
+            data: ["2019-03","2019-04","2019-05","2019-06","2019-07","2019-08","2019-09","2019-10","2019-11","2019-12","2020-01","2020-02","2020-03"]
         },
         yAxis: {
             type: 'value',
@@ -464,7 +464,7 @@
                 name: '文章篇数',
                 type: 'line',
                 color: ['#6772e5'],
-                data: [0,0,0,0,0,0,0,0,0,0,0,0,5],
+                data: [0,0,0,0,0,0,0,0,0,0,0,5,0],
                 markPoint: {
                     symbolSize: 45,
                     color: ['#fa755a','#3ecf8e','#82d3f4'],
@@ -530,7 +530,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["永生之酒 漫评","哲学 社科","社科 哲学"]
+                data: ["永生之酒 漫评","社科 哲学","哲学 社科"]
             }
         ],
         yAxis: [
