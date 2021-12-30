@@ -116,6 +116,6 @@ feed:
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: https://github.com/left-fdu/left-fdu.github.io.git
+  repo: http://github.com/left-fdu/left-fdu.github.io.git
   branch: master
 

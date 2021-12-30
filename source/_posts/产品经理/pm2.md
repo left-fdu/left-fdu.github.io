@@ -1,7 +1,9 @@
 ---
 title: 第一份工作总结
 categories: 产品
-tags: 产品;个人总结
+tags:
+  - 产品
+  - 个人总结
 abbrlink: 6f46d528
 date: 2020-10-02 00:00:00
 ---
