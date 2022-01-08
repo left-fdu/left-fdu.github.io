@@ -69,7 +69,7 @@ links:
 # 备案
 beian: 
     # 是否显示备案信息
-    enable: true
+    enable: false
     # 是否在主页面最底下显示备案信息(虽然丑，但是完全满足规定要求)
     enableFooter: false
     # 备案号
