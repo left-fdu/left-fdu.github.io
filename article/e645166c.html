@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>关于音乐合成的朴素分析 - KittyLeft</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="KittyLeft,"> 
+    <meta name="description" content="音乐可以分成人声和伴奏，也可以分成节奏、旋律、音色、和弦等等。合成分析的思路就是把最终传入人耳的声音组合拆分开，通过人工智能等方法复原其产生的过程，得到一个音乐的“源文件”。本研究拟从“理论”和“应,"> 
+    <meta name="author" content="Left"> 
+    <link rel="alternative" href="atom.xml" title="KittyLeft" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+    
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="关于音乐合成的朴素分析 - KittyLeft"/>
+    <meta name="twitter:description" content="音乐可以分成人声和伴奏，也可以分成节奏、旋律、音色、和弦等等。合成分析的思路就是把最终传入人耳的声音组合拆分开，通过人工智能等方法复原其产生的过程，得到一个音乐的“源文件”。本研究拟从“理论”和“应,"/>
+    
+    
+    
+    
+    <meta property="og:site_name" content="KittyLeft"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="关于音乐合成的朴素分析 - KittyLeft"/>
+    <meta property="og:description" content="音乐可以分成人声和伴奏，也可以分成节奏、旋律、音色、和弦等等。合成分析的思路就是把最终传入人耳的声音组合拆分开，通过人工智能等方法复原其产生的过程，得到一个音乐的“源文件”。本研究拟从“理论”和“应,"/>
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">KittyLeft</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://left-fdu.github.io"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">关于音乐合成的朴素分析</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">关于音乐合成的朴素分析</h1>
+        <div class="stuff">
+            <span>二月 20, 2022</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/VOCALOID/" rel="tag">VOCALOID</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p>音乐可以分成人声和伴奏，也可以分成节奏、旋律、音色、和弦等等。合成分析的思路就是把最终传入人耳的声音组合拆分开，通过人工智能等方法复原其产生的过程，得到一个音乐的“源文件”。本研究拟从“理论”和“应用”两方面拔丝抽茧，通过计算手段重构音乐的创作原理、创作方式，建立音乐分层模型，并试图提出其在现实生活种的应用方向。</p>
+<h2 id="音乐的对比和制作流程"><a href="#音乐的对比和制作流程" class="headerlink" title="音乐的对比和制作流程"></a>音乐的对比和制作流程</h2><p>放在最先的是音乐的对比。例如，这里有一首歌《A》，通过人工智能分析，模拟并输出人声、伴奏的 MIDI 文件，将这些导入对应的音乐软件，导出的音乐文件《A’》和原版《A》是否相同，相似程度该如何判断？</p>
+<p>音乐的基本制作流程是：作曲、编曲、演唱、混音。作曲对应人声的旋律，编曲对应伴奏、和弦，同时编曲也会参考旋律的表达。节奏在作曲和编曲的时候也确定了。演唱部分包含了歌词以及演唱的技巧，参考 VOCALOID 等虚拟歌姬（歌声合成）软件，演唱技巧可以视为不同演唱参数的调整。同时，混音会调整不同配器和人声的响度以达到和谐的听感，也可能存在调音修音等调整。</p>
+<p>也许采用波形对比可以达成音乐对比的目标：若两文件的波形图一致，则说明人工智能学习、建立的新文件在模仿程度上达到了期望的水平。若波形对比无法体现这种相似性，则寻找其它能达成该目的的对比方法。此为本实验最重要的一环。</p>
+<blockquote>
+<p>详细对比规则暂略</p>
+</blockquote>
+<h2 id="伴奏的拆分（制作流程）"><a href="#伴奏的拆分（制作流程）" class="headerlink" title="伴奏的拆分（制作流程）"></a>伴奏的拆分（制作流程）</h2><p>一首歌可以简单看作人声和伴奏的结合。目前网络上已经有较为成熟的、基于深度学习的人声伴奏拆分工具，软件学习成本不高。一首歌的节奏也可以通过测速软件直接得出。音乐拆分的时候不用额外再考虑这些因素。由于音乐理论方面有许多深入的研究，伴奏（编曲）部分有较为全面的理论基础，可以从伴奏的拆分开始，进行对完整音乐的拆分。</p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a><strong>原理</strong></h3><p>根据音乐的制作（编曲）流程，我把伴奏（纯音乐）拆分为配器、旋律两部分。配器是通过给定音乐识别演奏的乐器，例如吉他、鼓、钢琴等。旋律是指乐器演奏时的音高和音程，表现为节奏与和弦的形式。配器负责辨别以何种乐器演奏，旋律负责辨别用该乐器如何演奏。重点会放在音高的研究上。</p>
+<h3 id="实验"><a href="#实验" class="headerlink" title="实验"></a><strong>实验</strong></h3><table>
+<thead>
+<tr>
+<th>配器</th>
+<th>旋律</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>单配器</td>
+<td>单旋律</td>
+</tr>
+<tr>
+<td>多配器</td>
+<td>单旋律</td>
+</tr>
+<tr>
+<td>单配器</td>
+<td>多旋律</td>
+</tr>
+<tr>
+<td>多配器</td>
+<td>多旋律</td>
+</tr>
+<tr>
+<td>最终：实际歌曲的配器、旋律分析</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>PS．在研究旋律的合成时，和弦也许增加了识别的难度，但根据丰富的音乐理论，也许可以通过识别音乐风格，先确定大概的配器和和弦走向，通过情景分析的方法减少具体分析的工作量，以提高效率。同时，演奏技巧会成为分析的难点，实际演奏转化为电脑编曲的难题并非在此研究中才存在，将现成的音乐反向分析出演奏技巧和电脑编曲方式，也许存在某种对应关系，但目前来说，我们还没有如此丰富的编曲知识。通过此研究反而可以给电脑编曲提供新的思路。</p>
+<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a><strong>应用</strong></h3><p>目前的伴奏拆分软件已经可以实现实际歌曲中单配器的提取，例如提取出歌曲中的钢琴、鼓等。也有软件可以分析歌曲的和弦走向。但目前还没有软件可以做到从歌曲到精确 MIDI 乐谱的转化，这也许是音乐软件的一个进化方向。</p>
+<p>基于精确提取的功能，我们可以进行针对某种特定音乐风格的深度学习，以及特化的、基于目前编曲理论的人工智能编曲。对配器音色的分析，也有助于启发新音色的合成。</p>
+<h2 id="人声的拆分"><a href="#人声的拆分" class="headerlink" title="人声的拆分"></a>人声的拆分</h2><h3 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a><strong>原理</strong></h3><p>根据 VOCALOID、SV、UTAU 等歌声合成软件，将人声分为音色、技巧两方面。音色类似伴奏拆分时的配器，但是实际状况中，每个人的声音音色都是不同的，甚至个人都可以拥有丰富的声线，而歌声合成软件提供的音源是寥寥可数的。UTAU 原理上可以提取任何采样作为歌声，但是需要有足够丰富的采样样本。目前我没有实际使用过 UTAU，所以也暂不考虑。暂时考虑 VOCALOID 为实验使用的研究软件。</p>
+<p>演唱技巧对应歌声合成中的参数调整，理论上呼吸音、咆哮声等等都可以通过调整参数实现。不同歌声合成软件，乃至同一软件的不同版本，其参数调校方式都可能不同。这是本研究的一个重大局限。在没有更好选择的前提下，拟采用 VOCALOID４ 作为实验使用的研究软件。</p>
+<h3 id="实验-1"><a href="#实验-1" class="headerlink" title="实验"></a><strong>实验</strong></h3><ul>
+<li>音色<ol>
+<li>干声分析对应音源</li>
+<li>多轨干声分析对应音源</li>
+<li>歌曲分析对应音源</li>
+<li>真人歌曲分析匹配音源</li>
+</ol>
+</li>
+<li>演唱技巧<ol>
+<li>干声分析调参</li>
+<li>歌曲分析调参</li>
+<li>真人歌曲分析调参</li>
+<li>演唱的情感分析</li>
+</ol>
+</li>
+</ul>
+<p>PS．演唱的情感分析是最近看到人工智能通过微表情判断人类情感的研究，类比到音乐上，演唱也是能够表达情感的，这是通过音色、演唱技巧综合体现的。如果虚拟歌姬可以达到表达情感的效果，那就是对于合成音乐的最高评价了。</p>
+<p>同时，演唱是否可以通过对歌词的分析，来对表达的情感预分析？</p>
+<h3 id="应用-1"><a href="#应用-1" class="headerlink" title="应用"></a><strong>应用</strong></h3><p>通过对人声的模拟，虚拟歌姬可以更加真实地模仿真人歌手的演唱技巧和感情。对普通用户来说，可以有更加方便的 “AI一键调参”，内设演唱风格，甚至根据已有曲目让虚拟歌手自己“学习”新的演唱风格，而不需要作者辛苦调整每一个音符的演唱参数。</p>
+<p>还有更广泛的声音合成思路，是否可以不通过采样人声，而是采取其他声音的音色，用来合成歌唱的声音？</p>
+<h2 id="前景"><a href="#前景" class="headerlink" title="前景"></a>前景</h2><p>对于未来的遐想。声音最初始的形态是各种各样的波形，能否研究出音色合成的规律，通过波形直接模拟各种配器和声音，通过某个公式，直接把歌声转化成某乐器的演奏、某人声的演唱、乃至完整的音乐？</p>
+<p>理想的技术路线：</p>
+<p>虚拟歌姬翻唱 →→→ 原创歌曲 AI 调参（内设演唱风格） →→→ 设计兼容性强的独立歌声合成软件</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                </ul>
+            
+        </div>
+        
+    <div id="gitalk-container" class="comment link"
+		data-enable="false"
+        data-ae="false"
+        data-ci=""
+        data-cs=""
+        data-r=""
+        data-o=""
+        data-a=""
+        data-d="false"
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class="side">
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9F%B3%E4%B9%90%E7%9A%84%E5%AF%B9%E6%AF%94%E5%92%8C%E5%88%B6%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">音乐的对比和制作流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%B4%E5%A5%8F%E7%9A%84%E6%8B%86%E5%88%86%EF%BC%88%E5%88%B6%E4%BD%9C%E6%B5%81%E7%A8%8B%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">伴奏的拆分（制作流程）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-number">2.1.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C"><span class="toc-number">2.2.</span> <span class="toc-text">实验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8"><span class="toc-number">2.3.</span> <span class="toc-text">应用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%BA%E5%A3%B0%E7%9A%84%E6%8B%86%E5%88%86"><span class="toc-number">3.</span> <span class="toc-text">人声的拆分</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E7%90%86-1"><span class="toc-number">3.1.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C-1"><span class="toc-number">3.2.</span> <span class="toc-text">实验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8-1"><span class="toc-number">3.3.</span> <span class="toc-text">应用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E6%99%AF"><span class="toc-number">4.</span> <span class="toc-text">前景</span></a></li></ol>	
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
